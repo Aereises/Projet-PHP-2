@@ -1,3 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inscription</title>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+        <h2>Inscription</h2>
+        <form method="post" action="register.php">
+            <table>
+                <tr>
+                    <td><label for="nom"> Nom: </label></td>
+                    <td><input type="text" id="nom" name="nom"></td>
+                </tr>
+                <tr>
+                    <td><label for="prenom"> Prenom: </label></td>
+                    <td><input type="text" id="prenom" name="prenom"></td>
+                </tr>
+                <tr>
+                    <td><label for="email"> Email: </label></td>
+                    <td><input type="email" id="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="motdepasse"> Mot de passe : </label></td>
+                    <td><input type="password" id="motdepasse" name="motdepasse"></td>
+                </tr>
+                <tr>
+                    <td><label for="telfixe"> Numero de Telephone fixe: </label></td>
+                    <td><input type="tel"  id="telfixe" name="telfixe"></td>
+                </tr>
+                <tr>
+                    <td><label for="telportable"> Numero de Telephone portable: </label></td>
+                    <td><input type="tel"  id="telportable" name="telportable"></td>
+                </tr>
+                <tr>
+                    <td><label for="rue"> Rue:  </label></td>
+                    <td><textarea id="rue" name="rue"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="cp"> Code postal: </label></td>
+                    <td><input type="text" id="cp" name="cp"></td>
+                </tr>
+                <tr>
+                    <td><label for="ville"> Ville: </label></td>
+                    <td><input type="text" id="ville" name="ville"></td>
+                </tr>
+            </table>
+            <p>
+                <input type="submit" name=inscription>
+            </p>
+        </form>
+        <hr>
+        <p class="lien"><a href="login.php"> Vous avez deja un compte ? Connectez vous.</a></p>
+    </body>
+</html>
+
 <?php
 //CONNEXION A LA BASE DE DONNEE
 $bdd = new PDO('mysql:host=localhost;dbname=rmr_bibliotheque; charset=utf8', 'root', '');
@@ -34,7 +91,7 @@ isset($_POST["ville"])) {
     ));
     //AFFICHE LA CONFIRMATION DE L'INSCRIPTION
     echo ' Vous avez bien été inscrit !';
-    header('Location: login.html');
+    header('Location: login.php');
 }
 else{ // SI ON A PAS REMPLLIS LES CHAMPS
     echo"Veuillez remplir tous les champs";//ON DEMANDE A CE QUE TOUS LES CHAMPS SOIT REMPLIS

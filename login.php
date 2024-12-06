@@ -1,3 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Connection</title>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+        <h2>Connexion</h2>
+        <form method="post" action="login.php">
+            <table>
+                <tr>
+                    <td><label for="email"> Email : </label></td>
+                    <td><input type="email" id="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="motdepasse"> Mot de passe : </label></td>
+                    <td><input type="password" id="motdepasse" name="motdepasse"></td>
+                </tr>
+            </table>
+            <p>
+                <input type="submit" name=Connexion>
+            </p>
+
+        </form>
+        <hr>
+        <p class="lien"><a href="register.php"> Vous n'avez pas de compte ? Inscrivez vous.</a></p>
+    </body>
+</html>
+
 <?php
 //CONNECTION A LA BASE DE DONNEE
 $bdd = new PDO('mysql:host=localhost;dbname=rmr_bibliotheque; charset=utf8', 'root', '');
@@ -30,7 +60,7 @@ if (isset($_POST['email']) && isset($_POST['motdepasse'])) {
 
     else{
         echo "Vous n'etes pas encore inscrit. Veuillez vous inscrire pour acceder au site";
-        header('location:register.html');
+        header('location:register.php');
     }
 
 }else{
