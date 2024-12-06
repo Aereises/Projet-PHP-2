@@ -1,29 +1,21 @@
 <?php
 session_start();
 
-$_SESSION['id'];
-$_SESSION['nom'];
-$_SESSION['prenom'];
-$_SESSION['email'];
-$_SESSION['mot_de_passe'];
-$_SESSION['telfixe'];
-$_SESSION['telportable'];
-$_SESSION['rue'];
-$_SESSION['cp'];
-$_SESSION['ville'];
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Profil</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
     <body>
-        <h1>Votre profil</h1>
+        <h1>Mon compte</h1>
         <hr>
         <menu>
-            <li><a href="inscrit.php">Inscrit</a></li>
+            <li><a href="index.php">Mon compte</a></li>
+            <li><a href="inscrit.php">Inscrits</a></li>
             <li><a href="emprunt.php">Emprunts</a></li>
             <li><a href="auteur.php">Auteurs</a></li>
             <li><a href="livre.php">Livres</a></li>
@@ -31,7 +23,7 @@ $_SESSION['ville'];
         <hr>
         <h2>Mes informations</h2>
         <form action="index.php" method="POST">
-            <table>
+            <table class="table table-striped table-hover">
                 <tr>
                     <td><label for="nom"> Nom: </label></td>
                     <td><input type="text" id="nom" name="nom" value="<?=$_SESSION['nom']?>"></td>
@@ -68,10 +60,13 @@ $_SESSION['ville'];
                     <td><label for="ville"> Ville: </label></td>
                     <td><input type="text" id="ville" name="ville" value="<?=$_SESSION['ville']?>"></td>
                 </tr>
+                <tr>
+                    <td><input type="submit" value="Modifier"></td>
+                </tr>
             </table>
-            <input type="submit" value="Modifier">
-            <p></p>
         </form>
+        <input type="submit" value="Se deconnecter">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
 <?php
