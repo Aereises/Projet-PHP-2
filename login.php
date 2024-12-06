@@ -19,7 +19,7 @@ if (isset($_POST['email']) && isset($_POST['motdepasse'])) {
         $_SESSION['nom'] = $response['nom'];
         $_SESSION['prenom'] = $response['prenom'];
         $_SESSION['email'] = $response['email'];
-        $_SESSION['mot_de_passe'] = $response['motdepasse'];
+        $_SESSION['mot_de_passe'] = $response['mot_de_passe'];
         $_SESSION['telfixe'] = $response['tel_fixe'];
         $_SESSION['telportable'] = $response['tel_portable'];
         $_SESSION['rue'] = $response['rue'];

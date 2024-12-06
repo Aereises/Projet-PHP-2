@@ -1,20 +1,16 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
-    header("Location: login.php");
-    exit();
-}
+
 $_SESSION['id'];
 $_SESSION['nom'];
 $_SESSION['prenom'];
 $_SESSION['email'];
-$_SESSION['motdepasse'];
+$_SESSION['mot_de_passe'];
 $_SESSION['telfixe'];
 $_SESSION['telportable'];
 $_SESSION['rue'];
 $_SESSION['cp'];
 $_SESSION['ville'];
-var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +46,7 @@ var_dump($_SESSION);
                 </tr>
                 <tr>
                     <td><label for="motdepasse"> Mot de passe : </label></td>
-                    <td><input type="password" id="motdepasse" name="motdepasse" value="<?=$_SESSION['motdepasse']?>"></td>
+                    <td><input type="password" id="motdepasse" name="motdepasse" value="<?=$_SESSION['mot_de_passe']?>"></td>
                 </tr>
                 <tr>
                     <td><label for="telfixe"> Numero de Telephone fixe: </label></td>
@@ -79,19 +75,26 @@ var_dump($_SESSION);
     </body>
 </html>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=rmr_bibliotheque; charset=utf8', 'root', '');
-$req = $bdd->prepare('UPDATE inscrit SET nom=:nom, prenom=:prenom,email =:email,mot_de_passe=:motdepasse,
+
+if(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
+    isset($_POST["email"]) && isset($_POST["motdepasse"]) &&
+    isset($_POST["telfixe"]) && isset($_POST["telportable"]) &&
+    isset($_POST["rue"]) && isset($_POST["cp"]) &&
+    isset($_POST["ville"])) {
+    $bdd = new PDO('mysql:host=localhost;dbname=rmr_bibliotheque; charset=utf8', 'root', '');
+    $req = $bdd->prepare('UPDATE inscrit SET nom=:nom, prenom=:prenom,email =:email,mot_de_passe=:motdepasse,
         tel_fixe=:telfixe,tel_portable= :telportable,cp=:cp,rue=:rue,ville=:ville WHERE id_inscrit=:id');
-$req->execute(array(
-    'nom' => $_POST["nom"],
-    'prenom' => $_POST["prenom"],
-    'email' => $_POST["email"],
-    'motdepasse' => $_POST["motdepasse"],
-    'telfixe' => $_POST["telfixe"],
-    'telportable' => $_POST["telportable"],
-    'rue' => $_POST["rue"],
-    'ville' => $_POST["ville"],
-    'cp' => $_POST["cp"],
-    'id' => $_SESSION["id"]
-));
+    $req->execute(array(
+        'nom' => $_POST["nom"],
+        'prenom' => $_POST["prenom"],
+        'email' => $_POST["email"],
+        'motdepasse' => $_POST["motdepasse"],
+        'telfixe' => $_POST["telfixe"],
+        'telportable' => $_POST["telportable"],
+        'rue' => $_POST["rue"],
+        'ville' => $_POST["ville"],
+        'cp' => $_POST["cp"],
+        'id' => $_SESSION["id"]
+    ));
+}
 ?>
