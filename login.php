@@ -9,11 +9,11 @@ if (isset($_POST['email']) && isset($_POST['motdepasse'])) {
     $req = $bdd->prepare("SELECT * FROM inscrit WHERE email=:email AND mot_de_passe=:motdepasse");
     $req->execute(array(
         'email'=>$email,
-        'motdepasse' => $motdepasse
+        'motdepasse' => $motdepasse,
     ));
     $response=$req->fetch();
 //CONDITION SI LA REPONSE CONTIENT UN RESULTAT
-    if($response){
+    if($response) {
         session_start();
         $_SESSION['id'] = $response['id_inscrit'];
         $_SESSION['nom'] = $response['nom'];
@@ -27,10 +27,12 @@ if (isset($_POST['email']) && isset($_POST['motdepasse'])) {
         $_SESSION['ville'] = $response['ville'];
         header("location:index.php");
     }
+
     else{
         echo "Vous n'etes pas encore inscrit. Veuillez vous inscrire pour acceder au site";
         header('location:register.html');
     }
+
 }else{
     Echo"Veuillez remplir tous les champs";
 }
