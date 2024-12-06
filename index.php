@@ -24,9 +24,9 @@ $_SESSION['ville'];
         <hr>
         <menu>
             <li><a href="inscrit.php">Inscrit</a></li>
-            <li><a href="">Emprunts</a></li>
-            <li><a href="">Auteurs</a></li>
-            <li><a href="">Livres</a></li>
+            <li><a href="emprunt.php">Emprunts</a></li>
+            <li><a href="auteur.php">Auteurs</a></li>
+            <li><a href="livre.php">Livres</a></li>
         </menu>
         <hr>
         <h2>Mes informations</h2>
@@ -96,5 +96,16 @@ if(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
         'cp' => $_POST["cp"],
         'id' => $_SESSION["id"]
     ));
+    $response=$req->fetch();
+    $_SESSION['nom'] = $_POST['nom'];
+    $_SESSION['prenom'] = $_POST['prenom'];
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['mot_de_passe'] = $_POST['motdepasse'];
+    $_SESSION['telfixe'] = $_POST['telfixe'];
+    $_SESSION['telportable'] = $_POST['telportable'];
+    $_SESSION['rue'] = $_POST['rue'];
+    $_SESSION['cp'] =$_POST['cp'];
+    $_SESSION['ville'] = $_POST['ville'];
+
 }
 ?>
