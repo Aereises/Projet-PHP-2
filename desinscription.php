@@ -5,9 +5,8 @@ if(isset($_POST["desinscription"])){
     $req -> execute(array(
             'id' => $_SESSION["id"]
     ));
+header('Location:register.php');
     session_destroy();
-header('Location:inscription.php');
-var_dump($req);
 }
 session_start();
 

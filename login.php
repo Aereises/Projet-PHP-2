@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>Connection</title>
-        <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
         <h2>Connexion</h2>

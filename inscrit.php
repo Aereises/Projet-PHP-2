@@ -8,9 +8,9 @@ $response=$req->fetchAll();
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content
-        <link href="https://cdn.jsdelivr.ne="width=device-width, initial-scale=1">
-        <title>Inscrits</title>t/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <title>Inscrits</title>
     </head>
     <body>
     <h1>Liste des inscrits</h1>
@@ -23,7 +23,7 @@ $response=$req->fetchAll();
         <li><a href="livre.php">Livres</a></li>
     </menu>
     <hr>
-    <table class="table table-striped table-hover">
+    <table class="table table-hover">
        <thead>
        <tr>
            <th>Nom</th>
