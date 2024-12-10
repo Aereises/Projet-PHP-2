@@ -65,7 +65,12 @@ session_start();
                 </tr>
             </table>
         </form>
-        <input type="submit" value="Se deconnecter">
+        <form action="deconnection.php" method="post">
+        <input type="submit" value="Se deconnecter" name="deconnection">
+        </form>
+        <form action="desinscription.php" method="post">
+            <input type="submit" value="Se desinscrire" name="desinscription">
+        </form>
         <p><a href="desinscription.php">Vous voulez vous desinscrire ? Cliquez ici</a></p>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
