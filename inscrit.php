@@ -126,7 +126,7 @@ elseif(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
     }
     else{
     $bdd = new PDO('mysql:host=localhost;dbname=rmr_bibliotheque; charset=utf8', 'root', '');
-    $req = $bdd->prepare("DELETE FROM inscrit WHERE nom=:nom, prenom=:prenom,email =:email,mot_de_passe=:motdepasse,
+    $req = $bdd->prepare("DELETE FROM inscrit WHERE nom=:nom, prenom=:prenom,email=:email,mot_de_passe=:motdepasse,
         tel_fixe=:telfixe,tel_portable= :telportable,cp=:cp,rue=:rue,ville=:ville ");
     $req->execute(array(
         'nom' => $_POST["nom"],
@@ -139,7 +139,5 @@ elseif(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
         'ville' => $_POST["ville"],
         'cp' => $_POST["cp"]
     ));
-    session_destroy();
-    header('Location:register.php');
     }
 }
