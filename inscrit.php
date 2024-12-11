@@ -29,7 +29,6 @@ $response=$req->fetchAll();
            <th>Nom</th>
            <th>Prenom</th>
            <th>Email</th>
-           <th>Mot de passe</th>
            <th>Numero de Telephone fixe</th>
            <th>Numero de Telephone portable</th>
            <th>Rue</th>
@@ -44,7 +43,6 @@ $response=$req->fetchAll();
                 <td>".$row['nom']."</td>
                 <td>".$row['prenom']."</td>
                 <td>".$row['email']."</td>
-                <td>".$row['mot_de_passe']."</td>
                 <td>".$row['tel_fixe']."</td>
                 <td>".$row['tel_portable']."</td>
                 <td>".$row['rue']."</td>
