@@ -54,6 +54,7 @@ if (isset($_POST['email']) && isset($_POST['motdepasse'])) {
         $_SESSION['rue'] = $response['rue'];
         $_SESSION['cp'] = $response['cp'];
         $_SESSION['ville'] = $response['ville'];
+        $_SESSION['Admin'] = $response['Admin'];
         header("location:index.php");
     }
 

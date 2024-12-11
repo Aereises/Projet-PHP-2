@@ -2,8 +2,9 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Inscription</title>
-        <link rel="stylesheet" href="stylesheet.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
     <body>
         <h2>Inscription</h2>
@@ -60,10 +61,8 @@
 $bdd = new PDO('mysql:host=localhost;dbname=rmr_bibliotheque; charset=utf8', 'root', '');
 //CONDITION SI LES CHAMPS SONT REMPLIS
 if(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
-    isset($_POST["email"]) && isset($_POST["motdepasse"]) &&
-isset($_POST["telfixe"]) && isset($_POST["telportable"]) &&
-    isset($_POST["rue"]) && isset($_POST["cp"]) &&
-isset($_POST["ville"])) {
+    isset($_POST["email"]) && isset($_POST["telfixe"]) && isset($_POST["telportable"]) &&
+    isset($_POST["rue"]) && isset($_POST["cp"]) && isset($_POST["ville"])) {
     //ON INITIALISE NOS VARIABLES
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
@@ -74,6 +73,7 @@ isset($_POST["ville"])) {
     $rue = $_POST["rue"];
     $cp = $_POST["cp"];
     $ville = $_POST["ville"];
+
     //ON EXECUTE UNE REQUETE PREPARE POUR ENTRER NOS DONNEES DANS LA BASE
     $req = $bdd->prepare('INSERT INTO inscrit(nom,prenom,email,mot_de_passe,
         tel_fixe,tel_portable,cp,rue,ville) VALUES(:nom,:prenom,:email,:motdepasse,:telfixe,:telportable,:cp,:rue,:ville)');
@@ -92,10 +92,12 @@ isset($_POST["ville"])) {
     //AFFICHE LA CONFIRMATION DE L'INSCRIPTION
     echo ' Vous avez bien été inscrit !';
     header('Location: login.php');
+
+
 }
 else{ // SI ON A PAS REMPLLIS LES CHAMPS
-    echo"Veuillez remplir tous les champs";//ON DEMANDE A CE QUE TOUS LES CHAMPS SOIT REMPLIS
+  header('location: register.php' );
 }
-
+?>
 
 
