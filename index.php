@@ -61,15 +61,11 @@ session_start();
                     <td><input type="text" id="ville" name="ville" value="<?=$_SESSION['ville']?>"></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Modifier"></td>
+                    <td><input type="submit" value="Modifier" name="modification"></td>
+                    <td><input type="submit" value="Se deconnecter" name="deconnection"></td>
+                    <td><input type="submit" value="Se desinscrire" name="desinscription"></td>
                 </tr>
             </table>
-        </form>
-        <form action="deconnection.php" method="post">
-        <input type="submit" value="Se deconnecter" name="deconnection">
-        </form>
-        <form action="desinscription.php" method="post">
-            <input type="submit" value="Se desinscrire" name="desinscription">
         </form>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
@@ -80,7 +76,7 @@ if(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
     isset($_POST["email"]) && isset($_POST["motdepasse"]) &&
     isset($_POST["telfixe"]) && isset($_POST["telportable"]) &&
     isset($_POST["rue"]) && isset($_POST["cp"]) &&
-    isset($_POST["ville"])) {
+    isset($_POST["ville"]) && isset($_POST["modification"])) {
     $bdd = new PDO('mysql:host=localhost;dbname=rmr_bibliotheque; charset=utf8', 'root', '');
     $req = $bdd->prepare('UPDATE inscrit SET nom=:nom, prenom=:prenom,email =:email,mot_de_passe=:motdepasse,
         tel_fixe=:telfixe,tel_portable= :telportable,cp=:cp,rue=:rue,ville=:ville WHERE id_inscrit=:id');
@@ -107,5 +103,22 @@ if(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
     $_SESSION['cp'] =$_POST['cp'];
     $_SESSION['ville'] = $_POST['ville'];
 
+}elseif(isset($_POST["deconnection"])){
+    session_destroy();
+    header("Location:login.php");
+} elseif(isset($_POST["desinscription"])) {
+    if ($_SESSION['admin'] == "admin") {
+        echo"Desolé mais vous etes admin. Vous ne pouvez pas vous desinscrire.";
+    }
+    else {
+        $bdd = new PDO('mysql:host=localhost;dbname=rmr_bibliotheque; charset=utf8', 'root', '');
+        $req = $bdd->prepare("DELETE FROM inscrit WHERE id_inscrit=:id");
+        $req->execute(array(
+            'id' => $_SESSION["id"]
+        ));
+        session_destroy();
+        header('Location:register.php');
+
+    }
 }
 ?>
