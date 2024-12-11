@@ -27,38 +27,47 @@ session_start();
                 <tr>
                     <td><label for="nom"> Nom: </label></td>
                     <td><input type="text" id="nom" name="nom" value="<?=$_SESSION['nom']?>"></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="prenom"> Prenom: </label></td>
                     <td><input type="text" id="prenom" name="prenom" value="<?=$_SESSION['prenom']?>"></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="email"> Email: </label></td>
                     <td><input type="email" id="email" name="email" value="<?=$_SESSION['email']?>"></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="motdepasse"> Mot de passe : </label></td>
                     <td><input type="password" id="motdepasse" name="motdepasse" value="<?=$_SESSION['mot_de_passe']?>"></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="telfixe"> Numero de Telephone fixe: </label></td>
                     <td><input type="tel"  id="telfixe" name="telfixe" value="<?=$_SESSION['telfixe']?>"></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="telportable"> Numero de Telephone portable: </label></td>
                     <td><input type="tel"  id="telportable" name="telportable" value="<?=$_SESSION['telportable']?>"></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="rue"> Rue:  </label></td>
                     <td><input type="text" id="rue" name="rue" value="<?=$_SESSION['rue']?>"></td>
+                 <td></td>
                 </tr>
                 <tr>
                     <td><label for="cp"> Code postal: </label></td>
                     <td><input type="text" id="cp" name="cp" value="<?=$_SESSION['cp']?>"></td>
+                   <td></td>
                 </tr>
                 <tr>
                     <td><label for="ville"> Ville: </label></td>
                     <td><input type="text" id="ville" name="ville" value="<?=$_SESSION['ville']?>"></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Modifier" name="modification"></td>

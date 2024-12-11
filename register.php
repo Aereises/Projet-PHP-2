@@ -73,6 +73,7 @@ if(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
     $rue = $_POST["rue"];
     $cp = $_POST["cp"];
     $ville = $_POST["ville"];
+    
 
     //ON EXECUTE UNE REQUETE PREPARE POUR ENTRER NOS DONNEES DANS LA BASE
     $req = $bdd->prepare('INSERT INTO inscrit(nom,prenom,email,mot_de_passe,

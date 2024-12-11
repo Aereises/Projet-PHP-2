@@ -3,7 +3,7 @@ session_start();
 $bdd = new PDO('mysql:host=localhost;dbname=rmr_bibliotheque; charset=utf8', 'root', '');
 $req = $bdd->query("SELECT * FROM inscrit");
 $response=$req->fetchAll();
-var_dump($_SESSION);
+var_dump($response);
 ?>
 <!doctype html>
 <html lang="fr">
@@ -56,15 +56,15 @@ var_dump($_SESSION);
             foreach ($response as $row) {
                 echo " <tr>
                 <td><input type='checkbox' name='suppression'></td>
-                <td><input type='text' name='nom' value=".$row['nom']."></td>
-                <td><input type='text' name='prenom' value=".$row['prenom']."></td>
-                <td><input type='email' name='email' value=".$row['email']."></td>
-                <td><input type='password' name='motdepasse' value=".$row['mot_de_passe']."></td>
-                <td><input type='tel' name='telfixe' value=".$row['tel_fixe']."></td>
-                <td><input type='tel' name='telportable' value=".$row['tel_portable']."></td>
-                <td><input type='text' name='rue' value=".$row['rue']."></td>
-                <td><input type='text' name='cp' value=".$row['cp']."></td>
-                <td><input type='text' name='ville' value=".$row['ville']."></td>
+                <td><input type='text' name='nom' value='".$row['nom']."'></td>
+                <td><input type='text' name='prenom' value='".$row['prenom']."'></td>
+                <td><input type='email' name='email' value='".$row['email']."'></td>
+                <td><input type='password' name='motdepasse' value='".$row['mot_de_passe']."'></td>
+                <td><input type='tel' name='telfixe' value='".$row['tel_fixe']."'></td>
+                <td><input type='tel' name='telportable' value='".$row['tel_portable']."'></td>
+                <td><input type='text' name='rue' value='".$row['rue']."'></td>
+                <td><input type='text' name='cp' value='".$row['cp']."'></td>
+                <td><input type='text' name='ville' value='".$row['ville']."'></td>
             </tr>";
             }
             echo "<tr><td><input type='submit' name='suppression' value='Supprimer'></td>
@@ -98,7 +98,7 @@ if(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
     isset($_POST["rue"]) && isset($_POST["cp"]) &&
     isset($_POST["ville"]) && isset($_POST["modification"])) {
     $req = $bdd->prepare('UPDATE inscrit SET nom=:nom, prenom=:prenom,email =:email,mot_de_passe=:motdepasse,
-        tel_fixe=:telfixe,tel_portable= :telportable,cp=:cp,rue=:rue,ville=:ville');
+        tel_fixe=:telfixe,tel_portable= :telportable,cp=:cp,rue=:rue,ville=:ville WHERE id=:id  ');
     $req->execute(array(
         'nom' => $_POST["nom"],
         'prenom' => $_POST["prenom"],
@@ -109,8 +109,9 @@ if(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
         'rue' => $_POST["rue"],
         'ville' => $_POST["ville"],
         'cp' => $_POST["cp"],
+        'id' => $response["id"]
     ));
-    $response=$req->fetchall();
+    $res=$req->fetchall();
 }
 elseif(isset($_POST["nom"]) && isset($_POST["prenom"]) &&
     isset($_POST["email"]) && isset($_POST["motdepasse"]) &&
